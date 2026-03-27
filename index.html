@@ -157,8 +157,8 @@ body{font-family:var(--sans);background:var(--off);color:var(--text);-webkit-fon
 .footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:24px;display:flex;justify-content:space-between;align-items:center;font-size:13px;color:rgba(255,255,255,.35);}
 
 /* MOBILE NAV */
-.mob-panel{display:none;position:fixed;top:68px;left:0;right:0;bottom:0;background:rgba(255,252,245,.98);z-index:99;padding:24px;overflow-y:auto;}
-.mob-panel.open{display:block;}
+.mob-panel{display:none;position:fixed;top:120px;left:0;right:0;bottom:0;background:rgba(255,252,245,.98);z-index:99;padding:24px;overflow-y:auto;opacity:0;transform:translateY(-10px);transition:opacity .25s ease,transform .25s ease;}
+.mob-panel.open{display:block;opacity:1;transform:translateY(0);}
 .mob-nav-link{display:block;padding:14px 0;font-size:16px;font-weight:600;color:var(--text);text-decoration:none;border-bottom:1px solid var(--gold-light);}
 .mob-nav-link:hover{color:var(--gold-dark);}
 .mob-nav-sub{display:block;padding:10px 16px;font-size:14px;color:var(--text-muted);text-decoration:none;}
@@ -203,7 +203,7 @@ body{font-family:var(--sans);background:var(--off);color:var(--text);-webkit-fon
       <a href="#kontakt" class="nav-link">Kontakt</a>
     </div>
     <a href="mailto:geschaeftsleitung@goldiland.ch" class="nav-cta">Anmelden</a>
-    <div class="mob-btn" onclick="document.querySelector('.mob-panel').classList.toggle('open')">
+    <div class="mob-btn" onclick="var p=document.querySelector('.mob-panel');p.style.display='block';setTimeout(function(){p.classList.toggle('open');},10);">
       <span></span><span></span><span></span>
     </div>
   </div>
