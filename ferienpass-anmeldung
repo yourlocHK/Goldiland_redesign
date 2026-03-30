@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ferienpass Anmeldung – Chinderhuus Goldiland</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --gold:#8B9B3E;
+  --gold-dark:#6B7A2E;
+  --gold-light:#EEF2D8;
+  --off:#F8F6F0;
+  --text:#2C2C1A;
+  --text-muted:#7A7355;
+  --r:14px;
+  --sh:0 2px 16px rgba(0,0,0,.07);
+  --sans:'Inter',system-ui,sans-serif;
+  --display:'Nunito',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:var(--sans);background:var(--off);color:var(--text);-webkit-font-smoothing:antialiased;line-height:1.6;}
+
+/* WRAPPER */
+.form-page{max-width:760px;margin:0 auto;padding:48px 24px 80px;}
+
+/* HEADER */
+.form-header{text-align:center;margin-bottom:40px;}
+.form-badge{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid rgba(139,155,62,.3);border-radius:100px;padding:6px 16px;font-size:13px;font-weight:600;color:var(--gold-dark);margin-bottom:20px;}
+.form-badge span{width:8px;height:8px;background:var(--gold);border-radius:50%;display:inline-block;}
+.form-header h1{font-family:var(--display);font-size:clamp(26px,4vw,38px);font-weight:800;color:var(--text);line-height:1.15;margin-bottom:12px;}
+.form-header h1 em{font-style:normal;color:var(--gold-dark);}
+.form-header p{font-size:15px;color:var(--text-muted);max-width:500px;margin:0 auto;}
+
+/* INFO BOX */
+.info-box{background:var(--gold-light);border:1px solid rgba(139,155,62,.25);border-radius:16px;padding:20px 24px;margin-bottom:32px;display:flex;gap:14px;align-items:flex-start;}
+.info-box-icon{font-size:22px;flex-shrink:0;margin-top:1px;}
+.info-box-text{font-size:14px;color:var(--gold-dark);line-height:1.65;}
+.info-box-text strong{font-weight:700;}
+
+/* SECTION CARD */
+.form-section{background:#fff;border-radius:20px;padding:32px;border:1px solid rgba(139,155,62,.1);box-shadow:var(--sh);margin-bottom:24px;}
+.section-title{font-family:var(--display);font-size:18px;font-weight:700;color:var(--text);margin-bottom:6px;display:flex;align-items:center;gap:10px;}
+.section-title-icon{font-size:20px;}
+.section-sub{font-size:13px;color:var(--text-muted);margin-bottom:24px;}
+
+/* FORM GRID */
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.form-grid.col-1{grid-template-columns:1fr;}
+.form-grid.col-3{grid-template-columns:1fr 1fr 1fr;}
+@media(max-width:540px){
+  .form-grid,.form-grid.col-3{grid-template-columns:1fr;}
+}
+
+/* FIELD */
+.field{display:flex;flex-direction:column;gap:6px;}
+.field label{font-size:13px;font-weight:600;color:var(--text);}
+.field label .req{color:var(--gold-dark);}
+.field input,.field select,.field textarea{
+  width:100%;padding:11px 14px;font-size:14px;font-family:var(--sans);
+  border:1.5px solid #E0DDD4;border-radius:10px;background:#fff;
+  color:var(--text);outline:none;transition:border-color .2s;
+}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--gold);}
+.field textarea{resize:vertical;min-height:80px;}
+.field select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%237A7355' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:36px;}
+.field-hint{font-size:12px;color:var(--text-muted);margin-top:2px;}
+
+/* DAY SELECTOR */
+.day-selector{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:8px;}
+@media(max-width:540px){.day-selector{grid-template-columns:repeat(3,1fr);}}
+.day-btn{position:relative;}
+.day-btn input[type="checkbox"]{position:absolute;opacity:0;width:0;height:0;}
+.day-btn label{display:flex;flex-direction:column;align-items:center;gap:4px;padding:12px 8px;border:1.5px solid #E0DDD4;border-radius:12px;cursor:pointer;transition:all .2s;text-align:center;}
+.day-btn label .day-name{font-size:12px;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:.04em;}
+.day-btn label .day-date{font-size:13px;font-weight:600;color:var(--text);}
+.day-btn input:checked + label{border-color:var(--gold);background:var(--gold-light);}
+.day-btn input:checked + label .day-name{color:var(--gold-dark);}
+
+/* TAGES-BLOCK */
+.tagesblock{border:1.5px solid #E0DDD4;border-radius:14px;padding:20px;margin-top:8px;}
+.tagesblock-title{font-size:13px;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:16px;}
+.radio-group{display:flex;flex-wrap:wrap;gap:10px;}
+.radio-opt{position:relative;}
+.radio-opt input[type="radio"]{position:absolute;opacity:0;width:0;height:0;}
+.radio-opt label{display:inline-flex;align-items:center;gap:6px;padding:8px 14px;border:1.5px solid #E0DDD4;border-radius:8px;font-size:13px;font-weight:500;cursor:pointer;transition:all .2s;color:var(--text);}
+.radio-opt input:checked + label{border-color:var(--gold);background:var(--gold-light);color:var(--gold-dark);font-weight:600;}
+
+/* AKTIVITÄT ROW */
+.aktivitaet-row{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:10px;align-items:end;}
+@media(max-width:640px){.aktivitaet-row{grid-template-columns:1fr 1fr;}}
+@media(max-width:400px){.aktivitaet-row{grid-template-columns:1fr;}}
+.add-btn{display:inline-flex;align-items:center;gap:6px;margin-top:12px;padding:8px 14px;background:var(--gold-light);color:var(--gold-dark);font-size:13px;font-weight:600;border:none;border-radius:8px;cursor:pointer;transition:all .2s;}
+.add-btn:hover{background:var(--gold);color:#fff;}
+
+/* DIVIDER */
+.divider{height:1px;background:var(--gold-light);margin:20px 0;}
+
+/* CHECKBOX */
+.check-field{display:flex;align-items:flex-start;gap:12px;padding:16px;background:var(--gold-light);border-radius:12px;}
+.check-field input[type="checkbox"]{width:18px;height:18px;margin-top:2px;accent-color:var(--gold-dark);flex-shrink:0;cursor:pointer;}
+.check-field label{font-size:14px;color:var(--text);line-height:1.6;cursor:pointer;}
+.check-field label strong{color:var(--gold-dark);}
+
+/* SUBMIT */
+.form-footer{text-align:center;margin-top:8px;}
+.btn-submit{display:inline-block;padding:16px 48px;background:var(--gold);color:#fff;font-size:16px;font-weight:700;font-family:var(--sans);border:none;border-radius:14px;cursor:pointer;transition:all .2s;letter-spacing:.01em;}
+.btn-submit:hover{background:var(--gold-dark);transform:translateY(-1px);}
+.form-footer-note{font-size:12px;color:var(--text-muted);margin-top:12px;}
+
+/* SUCCESS */
+.success-msg{display:none;background:#fff;border-radius:20px;padding:48px 32px;text-align:center;box-shadow:var(--sh);}
+.success-msg .success-icon{font-size:56px;margin-bottom:16px;}
+.success-msg h2{font-family:var(--display);font-size:26px;font-weight:800;color:var(--text);margin-bottom:10px;}
+.success-msg p{font-size:15px;color:var(--text-muted);}
+</style>
+</head>
+<body>
+
+<div class="form-page">
+
+  <!-- HEADER -->
+  <div class="form-header">
+    <div class="form-badge"><span></span>Ferienpass 2026</div>
+    <h1>Anmeldung <em>Ferienpass</em></h1>
+    <p>Frühlings­ferien 2026 — 13. bis 17. April. Bitte pro Kind und Tag ein separates Formular ausfüllen.</p>
+  </div>
+
+  <!-- INFO -->
+  <div class="info-box">
+    <div class="info-box-icon">📋</div>
+    <div class="info-box-text">
+      <strong>Verbindliche Anmeldung:</strong> Die Anmeldung ist verbindlich. Bei kurzfristiger Nichtbeanspruchung kann keine Rückerstattung gewährt werden. Bitte alle Felder sorgfältig ausfüllen.
+    </div>
+  </div>
+
+  <form id="ferienpassForm" onsubmit="handleSubmit(event)" novalidate>
+  <!-- FORMSPREE: Ersetze DEINE_FORM_ID mit der ID aus deinem Formspree-Dashboard -->
+  <input type="hidden" name="_formspree_id" value="DEINE_FORM_ID">
+  <input type="hidden" name="_subject" value="Neue Ferienpass-Anmeldung – Goldiland">
+  <input type="hidden" name="_language" value="de">
+
+    <!-- 1. ANGABEN KIND -->
+    <div class="form-section">
+      <div class="section-title"><span class="section-title-icon">👧</span>Angaben zum Kind</div>
+      <div class="section-sub">Bitte die Angaben vollständig und korrekt eintragen.</div>
+      <div class="form-grid">
+        <div class="field">
+          <label>Vorname <span class="req">*</span></label>
+          <input type="text" name="kind_vorname" placeholder="z.B. Lena" required>
+        </div>
+        <div class="field">
+          <label>Nachname <span class="req">*</span></label>
+          <input type="text" name="kind_nachname" placeholder="z.B. Muster" required>
+        </div>
+        <div class="field">
+          <label>Geburtsdatum <span class="req">*</span></label>
+          <input type="date" name="kind_geburtsdatum" required>
+        </div>
+        <div class="field">
+          <label>Geschlecht</label>
+          <select name="kind_geschlecht">
+            <option value="">— bitte wählen —</option>
+            <option>Mädchen</option>
+            <option>Junge</option>
+            <option>Keine Angabe</option>
+          </select>
+        </div>
+      </div>
+      <div class="divider"></div>
+      <div class="form-grid col-1">
+        <div class="field">
+          <label>Besonderheiten / Allergien / Medikamente</label>
+          <textarea name="kind_besonderheiten" placeholder="Bitte alle relevanten Informationen eintragen, z.B. Lebensmittelallergien, Medikamente, besondere Bedürfnisse …"></textarea>
+          <span class="field-hint">Lassen Sie dieses Feld leer, falls keine Besonderheiten vorliegen.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. KONTAKTPERSON -->
+    <div class="form-section">
+      <div class="section-title"><span class="section-title-icon">👤</span>Erziehungsberechtigte / Kontaktperson</div>
+      <div class="section-sub">Hauptkontakt für Rückfragen und Notfälle.</div>
+      <div class="form-grid">
+        <div class="field">
+          <label>Vorname <span class="req">*</span></label>
+          <input type="text" name="eltern_vorname" placeholder="z.B. Maria" required>
+        </div>
+        <div class="field">
+          <label>Nachname <span class="req">*</span></label>
+          <input type="text" name="eltern_nachname" placeholder="z.B. Muster" required>
+        </div>
+        <div class="field">
+          <label>Beziehung zum Kind <span class="req">*</span></label>
+          <select name="eltern_beziehung" required>
+            <option value="">— bitte wählen —</option>
+            <option>Mutter</option>
+            <option>Vater</option>
+            <option>Grossmutter</option>
+            <option>Grossvater</option>
+            <option>Andere</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Telefon <span class="req">*</span></label>
+          <input type="tel" name="eltern_telefon" placeholder="+41 79 000 00 00" required>
+        </div>
+        <div class="field">
+          <label>E-Mail-Adresse <span class="req">*</span></label>
+          <input type="email" name="eltern_email" placeholder="name@beispiel.ch" required>
+        </div>
+        <div class="field">
+          <label>Alternative Telefonnummer</label>
+          <input type="tel" name="eltern_telefon2" placeholder="+41 79 000 00 00">
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. TAG -->
+    <div class="form-section">
+      <div class="section-title"><span class="section-title-icon">📅</span>Gewünschter Tag</div>
+      <div class="section-sub">Bitte den gewünschten Betreuungstag auswählen. Pro Kind und Tag ein separates Formular.</div>
+      <div class="day-selector">
+        <div class="day-btn">
+          <input type="radio" name="tag" id="tag_mo" value="Montag, 13.04.2026" required>
+          <label for="tag_mo"><span class="day-name">Mo</span><span class="day-date">13.04.</span></label>
+        </div>
+        <div class="day-btn">
+          <input type="radio" name="tag" id="tag_di" value="Dienstag, 14.04.2026">
+          <label for="tag_di"><span class="day-name">Di</span><span class="day-date">14.04.</span></label>
+        </div>
+        <div class="day-btn">
+          <input type="radio" name="tag" id="tag_mi" value="Mittwoch, 15.04.2026">
+          <label for="tag_mi"><span class="day-name">Mi</span><span class="day-date">15.04.</span></label>
+        </div>
+        <div class="day-btn">
+          <input type="radio" name="tag" id="tag_do" value="Donnerstag, 16.04.2026">
+          <label for="tag_do"><span class="day-name">Do</span><span class="day-date">16.04.</span></label>
+        </div>
+        <div class="day-btn">
+          <input type="radio" name="tag" id="tag_fr" value="Freitag, 17.04.2026">
+          <label for="tag_fr"><span class="day-name">Fr</span><span class="day-date">17.04.</span></label>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. TAGESABLAUF -->
+    <div class="form-section">
+      <div class="section-title"><span class="section-title-icon">🕐</span>Tagesablauf</div>
+      <div class="section-sub">Bitte den geplanten Ablauf für den gewählten Tag angeben.</div>
+
+      <!-- ANKUNFT -->
+      <div class="tagesblock">
+        <div class="tagesblock-title">Ankunft im Goldiland</div>
+        <div class="radio-group" style="margin-bottom:14px;">
+          <div class="radio-opt">
+            <input type="radio" name="ankunft_art" id="an_selbst" value="Eigenständiges Kommen">
+            <label for="an_selbst">🚶 Eigenständiges Kommen</label>
+          </div>
+          <div class="radio-opt">
+            <input type="radio" name="ankunft_art" id="an_bringen" value="Gebracht durch Eltern/Begleitperson">
+            <label for="an_bringen">🚗 Gebracht durch Begleitperson</label>
+          </div>
+        </div>
+        <div class="form-grid">
+          <div class="field">
+            <label>Ankunftszeit</label>
+            <input type="time" name="ankunft_zeit">
+          </div>
+          <div class="field">
+            <label>Bemerkung</label>
+            <input type="text" name="ankunft_bemerkung" placeholder="Optional">
+          </div>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <!-- FERIENPASS AKTIVITÄTEN -->
+      <div class="tagesblock">
+        <div class="tagesblock-title">Ferienpass-Aktivitäten (ausserhalb Goldiland)</div>
+        <div id="aktivitaeten-container">
+          <div class="aktivitaet-row" style="margin-bottom:10px;">
+            <div class="field">
+              <label>Aktivität / Workshop</label>
+              <input type="text" name="akt_name[]" placeholder="z.B. Töpferkurs">
+            </div>
+            <div class="field">
+              <label>Beginn</label>
+              <input type="time" name="akt_beginn[]">
+            </div>
+            <div class="field">
+              <label>Ende</label>
+              <input type="time" name="akt_ende[]">
+            </div>
+            <div class="field">
+              <label>Laufweg?</label>
+              <select name="akt_laufweg[]">
+                <option value="">—</option>
+                <option>Ja, alleine</option>
+                <option>Ja, begleitet</option>
+                <option>Nein</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <button type="button" class="add-btn" onclick="addAktivitaet()">+ Weitere Aktivität hinzufügen</button>
+        <div class="field-hint" style="margin-top:8px;">Falls das Kind an keiner Ferienpass-Aktivität teilnimmt, leer lassen.</div>
+      </div>
+
+      <div class="divider"></div>
+
+      <!-- ABHOLUNG -->
+      <div class="tagesblock">
+        <div class="tagesblock-title">Abholung / Abgang</div>
+        <div class="radio-group" style="margin-bottom:14px;">
+          <div class="radio-opt">
+            <input type="radio" name="abholung_art" id="ab_selbst" value="Eigenständiges Gehen">
+            <label for="ab_selbst">🚶 Eigenständiges Gehen</label>
+          </div>
+          <div class="radio-opt">
+            <input type="radio" name="abholung_art" id="ab_abgeholt" value="Abgeholt durch Begleitperson">
+            <label for="ab_abgeholt">🚗 Abgeholt durch Begleitperson</label>
+          </div>
+        </div>
+        <div class="form-grid">
+          <div class="field">
+            <label>Abholzeit</label>
+            <input type="time" name="abholung_zeit">
+          </div>
+          <div class="field">
+            <label>Abgeholt durch</label>
+            <input type="text" name="abholung_person" placeholder="z.B. Vater, Grossmutter …">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5. MITTAGESSEN -->
+    <div class="form-section">
+      <div class="section-title"><span class="section-title-icon">🍽️</span>Mittagessen</div>
+      <div class="section-sub">Damit wir die Verpflegung planen können.</div>
+      <div class="radio-group" style="margin-bottom:16px;">
+        <div class="radio-opt">
+          <input type="radio" name="mittagessen" id="essen_ja" value="Ja, im Goldiland">
+          <label for="essen_ja">Ja, im Goldiland</label>
+        </div>
+        <div class="radio-opt">
+          <input type="radio" name="mittagessen" id="essen_selbst" value="Eigene Verpflegung (Lunchbox)">
+          <label for="essen_selbst">Eigene Verpflegung (Lunchbox)</label>
+        </div>
+        <div class="radio-opt">
+          <input type="radio" name="mittagessen" id="essen_nein" value="Kein Mittagessen">
+          <label for="essen_nein">Kein Mittagessen</label>
+        </div>
+      </div>
+      <div class="form-grid col-1">
+        <div class="field">
+          <label>Ernährungshinweise / Unverträglichkeiten</label>
+          <input type="text" name="mittagessen_hinweis" placeholder="z.B. vegetarisch, laktosefrei …">
+        </div>
+      </div>
+    </div>
+
+    <!-- 6. BEMERKUNGEN -->
+    <div class="form-section">
+      <div class="section-title"><span class="section-title-icon">💬</span>Weitere Bemerkungen</div>
+      <div class="section-sub">Gibt es etwas, das wir noch wissen sollten?</div>
+      <div class="field">
+        <textarea name="bemerkungen" placeholder="Sonstige Hinweise, Fragen oder besondere Wünsche …" style="min-height:100px;"></textarea>
+      </div>
+    </div>
+
+    <!-- 7. EINVERSTÄNDNIS -->
+    <div class="form-section">
+      <div class="section-title"><span class="section-title-icon">✅</span>Einverständnis</div>
+      <div style="display:flex;flex-direction:column;gap:12px;">
+        <div class="check-field">
+          <input type="checkbox" id="zustimmung_verbindlich" name="zustimmung_verbindlich" required>
+          <label for="zustimmung_verbindlich">Ich bestätige, dass <strong>die Anmeldung verbindlich ist</strong> und bei kurzfristiger Nichtbeanspruchung keine Rückerstattung erfolgt.</label>
+        </div>
+        <div class="check-field">
+          <input type="checkbox" id="zustimmung_reglement" name="zustimmung_reglement" required>
+          <label for="zustimmung_reglement">Ich habe das <strong>Betriebsreglement und die Tarifordnung</strong> des Chinderhuus Goldiland zur Kenntnis genommen und akzeptiere diese.</label>
+        </div>
+        <div class="check-field">
+          <input type="checkbox" id="zustimmung_fotos" name="zustimmung_fotos">
+          <label for="zustimmung_fotos">Ich bin einverstanden, dass im Rahmen des Ferienpass <strong>Fotos des Kindes</strong> für interne Zwecke und Social Media gemacht werden dürfen. (Freiwillig)</label>
+        </div>
+      </div>
+    </div>
+
+    <!-- SUBMIT -->
+    <div class="form-footer">
+      <button type="submit" class="btn-submit">Anmeldung absenden</button>
+      <div class="form-footer-note">Sie erhalten nach der Anmeldung eine Bestätigung per E-Mail.<br>Fragen? <a href="mailto:geschaeftsleitung@goldiland.ch" style="color:var(--gold-dark);">geschaeftsleitung@goldiland.ch</a></div>
+    </div>
+
+  </form>
+
+  <!-- SUCCESS MESSAGE -->
+  <div class="success-msg" id="successMsg">
+    <div class="success-icon">🎉</div>
+    <h2>Anmeldung eingegangen!</h2>
+    <p>Vielen Dank. Wir haben Ihre Anmeldung erhalten und melden uns per E-Mail.<br>Bei Fragen erreichen Sie uns unter <a href="mailto:geschaeftsleitung@goldiland.ch" style="color:var(--gold-dark);">geschaeftsleitung@goldiland.ch</a>.</p>
+  </div>
+
+</div>
+
+<script>
+function addAktivitaet() {
+  var container = document.getElementById('aktivitaeten-container');
+  var row = document.createElement('div');
+  row.className = 'aktivitaet-row';
+  row.style.marginBottom = '10px';
+  row.innerHTML = `
+    <div class="field">
+      <label>Aktivität / Workshop</label>
+      <input type="text" name="akt_name[]" placeholder="z.B. Töpferkurs">
+    </div>
+    <div class="field">
+      <label>Beginn</label>
+      <input type="time" name="akt_beginn[]">
+    </div>
+    <div class="field">
+      <label>Ende</label>
+      <input type="time" name="akt_ende[]">
+    </div>
+    <div class="field">
+      <label>Laufweg?</label>
+      <select name="akt_laufweg[]">
+        <option value="">—</option>
+        <option>Ja, alleine</option>
+        <option>Ja, begleitet</option>
+        <option>Nein</option>
+      </select>
+    </div>
+  `;
+  container.appendChild(row);
+}
+
+// ⚙️ FORMSPREE: Ersetze diese ID mit deiner eigenen aus formspree.io/dashboard
+var FORMSPREE_ID = 'DEINE_FORM_ID';
+
+function handleSubmit(e) {
+  e.preventDefault();
+  var form = document.getElementById('ferienpassForm');
+
+  // Validierung
+  var requiredFields = form.querySelectorAll('[required]');
+  var valid = true;
+  requiredFields.forEach(function(field) {
+    field.style.borderColor = '';
+    if (!field.value || (field.type === 'checkbox' && !field.checked)) {
+      field.style.borderColor = '#e05c5c';
+      valid = false;
+    }
+  });
+  if (!valid) {
+    var first = form.querySelector('[style*="e05c5c"]');
+    if (first) first.scrollIntoView({behavior:'smooth', block:'center'});
+    return;
+  }
+
+  // Button-Status
+  var btn = form.querySelector('.btn-submit');
+  btn.textContent = 'Wird gesendet …';
+  btn.disabled = true;
+
+  // Daten sammeln
+  var data = new FormData(form);
+
+  // An Formspree senden
+  fetch('https://formspree.io/f/' + FORMSPREE_ID, {
+    method: 'POST',
+    body: data,
+    headers: { 'Accept': 'application/json' }
+  })
+  .then(function(response) {
+    if (response.ok) {
+      form.style.display = 'none';
+      document.getElementById('successMsg').style.display = 'block';
+      window.scrollTo({top: 0, behavior: 'smooth'});
+    } else {
+      return response.json().then(function(data) {
+        throw new Error(data.errors ? data.errors.map(function(e){return e.message;}).join(', ') : 'Fehler beim Senden');
+      });
+    }
+  })
+  .catch(function(err) {
+    btn.textContent = 'Anmeldung absenden';
+    btn.disabled = false;
+    alert('Es ist ein Fehler aufgetreten: ' + err.message + '\n\nBitte versuchen Sie es erneut oder kontaktieren Sie uns direkt per E-Mail.');
+  });
+}
+</script>
+</body>
+</html>
