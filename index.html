@@ -140,9 +140,17 @@ body{font-family:var(--sans);background:var(--off);color:var(--text);-webkit-fon
 .events-link{display:inline-flex;align-items:center;gap:4px;font-size:13px;font-weight:600;color:var(--gold-dark);text-decoration:none;padding:6px 12px;border:1.5px solid var(--gold);border-radius:8px;transition:all .2s;}
 .events-link:hover{background:var(--gold);color:#fff;}
 .events-table-wrap{background:#fff;border-radius:20px;overflow:hidden;box-shadow:var(--sh);}
-@media(max-width:600px){
-  .events-table td:first-child{white-space:normal;}
-  .events-table td,.events-table th{padding:12px 14px;}
+@media(max-width:680px){
+  .events-table thead{display:none;}
+  .events-table tbody tr{display:flex;flex-direction:column;gap:6px;padding:16px;border-bottom:1px solid var(--gold-light);background:#fff;}
+  .events-table tbody tr:hover{background:var(--gold-light);}
+  .events-table td{display:flex;align-items:center;gap:10px;padding:0;border:none;font-size:14px;}
+  .events-table td:first-child{font-size:13px;font-weight:700;color:var(--gold-dark);}
+  .events-table td:nth-child(2){font-size:14px;color:var(--text);font-weight:500;}
+  .events-table td:nth-child(2) small{display:block;margin-top:2px;}
+  .events-table td:nth-child(3){order:-1;}
+  .events-table td:last-child{margin-top:4px;}
+  .events-table td[data-label]:before{content:attr(data-label);font-size:11px;color:var(--text-muted);font-weight:600;text-transform:uppercase;letter-spacing:.05em;min-width:60px;}
 }
 
 /* INSTAGRAM MODAL */
@@ -512,100 +520,100 @@ body{font-family:var(--sans);background:var(--off);color:var(--text);-webkit-fon
         </thead>
         <tbody>
           <tr>
-            <td>03.04.2026</td>
-            <td>Karfreitag</td>
-            <td><span class="events-badge events-badge-closed">Geschlossen</span></td>
-            <td>—</td>
+            <td data-label="Datum">03.04.2026</td>
+            <td data-label="Anlass">Karfreitag</td>
+            <td data-label="Status"><span class="events-badge events-badge-closed">Geschlossen</span></td>
+            <td data-label="Anmeldung">—</td>
           </tr>
           <tr>
-            <td>06.04.2026</td>
-            <td>Ostermontag</td>
-            <td><span class="events-badge events-badge-closed">Geschlossen</span></td>
-            <td>—</td>
+            <td data-label="Datum">06.04.2026</td>
+            <td data-label="Anlass">Ostermontag</td>
+            <td data-label="Status"><span class="events-badge events-badge-closed">Geschlossen</span></td>
+            <td data-label="Anmeldung">—</td>
           </tr>
           <tr>
-            <td>07.–10.04.2026</td>
-            <td>Unihockeycamp<br><small style="color:var(--text-muted);font-size:12px;">Anmeldefrist: 22.03.2026</small></td>
-            <td><span class="events-badge events-badge-open">Anmeldung offen</span></td>
-            <td><a href="https://www.goldiland.ch/events/" class="events-link" target="_blank">Anmelden ↗</a></td>
+            <td data-label="Datum">07.–10.04.2026</td>
+            <td data-label="Anlass">Unihockeycamp<br><small style="color:var(--text-muted);font-size:12px;">Anmeldefrist: 22.03.2026</small></td>
+            <td data-label="Status"><span class="events-badge events-badge-open">Anmeldung offen</span></td>
+            <td data-label="Anmeldung"><a href="https://www.goldiland.ch/events/" class="events-link" target="_blank">Anmelden ↗</a></td>
           </tr>
           <tr>
-            <td>07.–17.04.2026</td>
-            <td>Frühlingsferienplausch<br><small style="color:var(--text-muted);font-size:12px;">Anmeldefrist: 22.03.2026</small></td>
-            <td><span class="events-badge events-badge-open">Anmeldung offen</span></td>
-            <td><a href="https://www.goldiland.ch/events/" class="events-link" target="_blank">Anmelden ↗</a></td>
+            <td data-label="Datum">07.–17.04.2026</td>
+            <td data-label="Anlass">Frühlingsferienplausch<br><small style="color:var(--text-muted);font-size:12px;">Anmeldefrist: 22.03.2026</small></td>
+            <td data-label="Status"><span class="events-badge events-badge-open">Anmeldung offen</span></td>
+            <td data-label="Anmeldung"><a href="https://www.goldiland.ch/events/" class="events-link" target="_blank">Anmelden ↗</a></td>
           </tr>
           <tr>
-            <td>13.–17.04.2026</td>
-            <td>Rund um den Ferienpass<br><small style="color:var(--text-muted);font-size:12px;">Anmeldefrist: 22.03.2026</small></td>
-            <td><span class="events-badge events-badge-open">Anmeldung offen</span></td>
-            <td><a href="https://www.goldiland.ch/events/" class="events-link" target="_blank">Anmelden ↗</a></td>
+            <td data-label="Datum">13.–17.04.2026</td>
+            <td data-label="Anlass">Rund um den Ferienpass<br><small style="color:var(--text-muted);font-size:12px;">Anmeldefrist: 22.03.2026</small></td>
+            <td data-label="Status"><span class="events-badge events-badge-open">Anmeldung offen</span></td>
+            <td data-label="Anmeldung"><a href="ferienpass-anmeldung.html" class="events-link">Anmelden ↗</a></td>
           </tr>
           <tr>
-            <td>01.05.2026</td>
-            <td>1. Mai<br><small style="color:var(--text-muted);font-size:12px;">Anmeldefrist: 19.04.2026</small></td>
-            <td><span class="events-badge events-badge-open">Anmeldung offen</span></td>
-            <td><a href="https://www.goldiland.ch/events/" class="events-link" target="_blank">Anmelden ↗</a></td>
+            <td data-label="Datum">01.05.2026</td>
+            <td data-label="Anlass">1. Mai<br><small style="color:var(--text-muted);font-size:12px;">Anmeldefrist: 19.04.2026</small></td>
+            <td data-label="Status"><span class="events-badge events-badge-open">Anmeldung offen</span></td>
+            <td data-label="Anmeldung"><a href="https://www.goldiland.ch/events/" class="events-link" target="_blank">Anmelden ↗</a></td>
           </tr>
           <tr>
-            <td>14.05.2026</td>
-            <td>Auffahrt</td>
-            <td><span class="events-badge events-badge-closed">Geschlossen</span></td>
-            <td>—</td>
+            <td data-label="Datum">14.05.2026</td>
+            <td data-label="Anlass">Auffahrt</td>
+            <td data-label="Status"><span class="events-badge events-badge-closed">Geschlossen</span></td>
+            <td data-label="Anmeldung">—</td>
           </tr>
           <tr>
-            <td>15.05.2026</td>
-            <td>Freitag nach Auffahrt<br><small style="color:var(--text-muted);font-size:12px;">Anmeldefrist: 26.04.2026</small></td>
-            <td><span class="events-badge events-badge-open">Anmeldung offen</span></td>
-            <td><a href="https://www.goldiland.ch/events/" class="events-link" target="_blank">Anmelden ↗</a></td>
+            <td data-label="Datum">15.05.2026</td>
+            <td data-label="Anlass">Freitag nach Auffahrt<br><small style="color:var(--text-muted);font-size:12px;">Anmeldefrist: 26.04.2026</small></td>
+            <td data-label="Status"><span class="events-badge events-badge-open">Anmeldung offen</span></td>
+            <td data-label="Anmeldung"><a href="https://www.goldiland.ch/events/" class="events-link" target="_blank">Anmelden ↗</a></td>
           </tr>
           <tr>
-            <td>25.05.2026</td>
-            <td>Pfingstmontag</td>
-            <td><span class="events-badge events-badge-closed">Geschlossen</span></td>
-            <td>—</td>
+            <td data-label="Datum">25.05.2026</td>
+            <td data-label="Anlass">Pfingstmontag</td>
+            <td data-label="Status"><span class="events-badge events-badge-closed">Geschlossen</span></td>
+            <td data-label="Anmeldung">—</td>
           </tr>
           <tr>
-            <td>04.06.2026</td>
-            <td>Fronleichnam</td>
-            <td><span class="events-badge events-badge-closed">Geschlossen</span></td>
-            <td>—</td>
+            <td data-label="Datum">04.06.2026</td>
+            <td data-label="Anlass">Fronleichnam</td>
+            <td data-label="Status"><span class="events-badge events-badge-closed">Geschlossen</span></td>
+            <td data-label="Anmeldung">—</td>
           </tr>
           <tr>
-            <td>05.06.2026</td>
-            <td>Freitag nach Fronleichnam<br><small style="color:var(--text-muted);font-size:12px;">Anmeldefrist: 17.05.2026</small></td>
-            <td><span class="events-badge events-badge-open">Anmeldung offen</span></td>
-            <td><a href="https://www.goldiland.ch/events/" class="events-link" target="_blank">Anmelden ↗</a></td>
+            <td data-label="Datum">05.06.2026</td>
+            <td data-label="Anlass">Freitag nach Fronleichnam<br><small style="color:var(--text-muted);font-size:12px;">Anmeldefrist: 17.05.2026</small></td>
+            <td data-label="Status"><span class="events-badge events-badge-open">Anmeldung offen</span></td>
+            <td data-label="Anmeldung"><a href="https://www.goldiland.ch/events/" class="events-link" target="_blank">Anmelden ↗</a></td>
           </tr>
           <tr>
-            <td>17.06.2026</td>
-            <td>Besuchsnachmittag</td>
-            <td><span class="events-badge events-badge-special">Veranstaltung</span></td>
-            <td>—</td>
+            <td data-label="Datum">17.06.2026</td>
+            <td data-label="Anlass">Besuchsnachmittag</td>
+            <td data-label="Status"><span class="events-badge events-badge-special">Veranstaltung</span></td>
+            <td data-label="Anmeldung">—</td>
           </tr>
           <tr>
-            <td>24.06.2026</td>
-            <td>Besuchsnachmittag</td>
-            <td><span class="events-badge events-badge-special">Veranstaltung</span></td>
-            <td>—</td>
+            <td data-label="Datum">24.06.2026</td>
+            <td data-label="Anlass">Besuchsnachmittag</td>
+            <td data-label="Status"><span class="events-badge events-badge-special">Veranstaltung</span></td>
+            <td data-label="Anmeldung">—</td>
           </tr>
           <tr>
-            <td>06.07.–07.08.2026</td>
-            <td>Sommerferienplausch<br><small style="color:var(--text-muted);font-size:12px;">Anmeldefrist: 21.06.2026</small></td>
-            <td><span class="events-badge events-badge-open">Anmeldung offen</span></td>
-            <td><a href="https://www.goldiland.ch/events/" class="events-link" target="_blank">Anmelden ↗</a></td>
+            <td data-label="Datum">06.07.–07.08.2026</td>
+            <td data-label="Anlass">Sommerferienplausch<br><small style="color:var(--text-muted);font-size:12px;">Anmeldefrist: 21.06.2026</small></td>
+            <td data-label="Status"><span class="events-badge events-badge-open">Anmeldung offen</span></td>
+            <td data-label="Anmeldung"><a href="https://www.goldiland.ch/events/" class="events-link" target="_blank">Anmelden ↗</a></td>
           </tr>
           <tr>
-            <td>28.09.–09.10.2026</td>
-            <td>Herbstferienplausch<br><small style="color:var(--text-muted);font-size:12px;">Anmeldefrist: 13.09.2026</small></td>
-            <td><span class="events-badge events-badge-open">Anmeldung offen</span></td>
-            <td><a href="https://www.goldiland.ch/events/" class="events-link" target="_blank">Anmelden ↗</a></td>
+            <td data-label="Datum">28.09.–09.10.2026</td>
+            <td data-label="Anlass">Herbstferienplausch<br><small style="color:var(--text-muted);font-size:12px;">Anmeldefrist: 13.09.2026</small></td>
+            <td data-label="Status"><span class="events-badge events-badge-open">Anmeldung offen</span></td>
+            <td data-label="Anmeldung"><a href="https://www.goldiland.ch/events/" class="events-link" target="_blank">Anmelden ↗</a></td>
           </tr>
           <tr>
-            <td>05.–09.10.2026</td>
-            <td>Fussballcamp<br><small style="color:var(--text-muted);font-size:12px;">Anmeldefrist: 13.09.2026</small></td>
-            <td><span class="events-badge events-badge-open">Anmeldung offen</span></td>
-            <td><a href="https://www.goldiland.ch/events/" class="events-link" target="_blank">Anmelden ↗</a></td>
+            <td data-label="Datum">05.–09.10.2026</td>
+            <td data-label="Anlass">Fussballcamp<br><small style="color:var(--text-muted);font-size:12px;">Anmeldefrist: 13.09.2026</small></td>
+            <td data-label="Status"><span class="events-badge events-badge-open">Anmeldung offen</span></td>
+            <td data-label="Anmeldung"><a href="https://www.goldiland.ch/events/" class="events-link" target="_blank">Anmelden ↗</a></td>
           </tr>
         </tbody>
       </table>
